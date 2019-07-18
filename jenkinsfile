@@ -1,0 +1,14 @@
+node{
+stage('preparation')
+{
+git 'https://github.com/ranjithanagaraj/terraform.git'
+}
+
+stage('terraform')
+{
+sh 'terraform init'
+sh 'terraform plan -out myplan'
+sh 'terraform apply -input=true myplan'
+}
+ 
+}
